@@ -11,7 +11,6 @@ body {
     background-color: #1b2a34;
     color: #e1e1e1;
     position: relative;
-    margin: 0;
 }
 
 /* Background */
@@ -37,7 +36,6 @@ header {
 
 header h1 {
     font-size: 2.5rem;
-    font-family: 'Russo One', sans-serif;
     letter-spacing: 4px;
 }
 
@@ -46,11 +44,6 @@ nav ul {
     justify-content: center;
     gap: 20px;
     list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    font-size: 1.2rem;
 }
 
 nav ul li a {
@@ -73,17 +66,12 @@ nav ul li a:hover {
 .animated-text {
     font-size: 3rem;
     color: #8a9b6e;
-    animation: type 3s steps(30) infinite;
-    font-family: 'Russo One', sans-serif;
-}
-
-@keyframes type {
-    0% {
-        width: 0;
-    }
-    100% {
-        width: 100%;
-    }
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #8a9b6e;
+    display: inline-block;
+    width: 0;
+    animation: typing 3s steps(30, end) forwards;
 }
 
 .cursor {
@@ -95,10 +83,26 @@ nav ul li a:hover {
     animation: blink 0.7s step-end infinite;
 }
 
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Cursor stops blinking after typing is done */
 @keyframes blink {
     50% {
         opacity: 0;
     }
+}
+
+/* Stop Cursor Blinking After Typing */
+.animated-text.finished + .cursor {
+    animation: none;
+    display: none;
 }
 
 /* Scroll Reveal Animation */
@@ -113,6 +117,7 @@ nav ul li a:hover {
     transform: translateY(0);
 }
 
+/* Section Styles */
 section {
     padding: 50px;
     margin: 30px 0;
@@ -122,6 +127,7 @@ section {
     position: relative;
 }
 
+/* Subtle Glow Effect */
 section::before {
     content: '';
     position: absolute;
@@ -135,10 +141,10 @@ section::before {
 
 @keyframes glow {
     0% {
-        box-shadow: 0 0 10px #8a9b6e;
+        box-shadow: 0 0 5px #8a9b6e;
     }
     100% {
-        box-shadow: 0 0 20px #8a9b6e;
+        box-shadow: 0 0 15px #8a9b6e;
     }
 }
 
